@@ -7,18 +7,18 @@ import struct
 k=struct.pack('B', 0xff)
 
 ser = serial.Serial(
-    port='/dev/ttyS0',
+    port='/dev/ttyS0',#Selected port to read from the pins 15tx and 16rx
     baudrate =9600,           
     parity=serial.PARITY_NONE,
     stopbits=serial.STOPBITS_ONE,
     bytesize=serial.EIGHTBITS,
-    timeout=1)
+    timeout=1) #Serial to read the HMI 
 
 
 
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
-#Setting GPIO
+#Setting GPIO on the RASP PI4
 GPIO.setup(23,GPIO.OUT)
 GPIO.setup(24,GPIO.OUT)
 GPIO.setup(27,GPIO.OUT)
@@ -73,7 +73,7 @@ def text(str):
 	ser.write(k)
 
 #Reset button
-reset_button('b0')
+reset_button('b0') #The b0 is the id of the button on the HMI display for each button
 reset_button('b1')
 reset_button('b2')
 reset_button('b3')
@@ -94,7 +94,7 @@ while True:
 		if output:
 			#print(output)
 			#jika tombol1
-			if output == b'e\x00\x01\x01\xff\xff\xff':
+			if output == b'e\x00\x01\x01\xff\xff\xff': #code given from the button readed from the uart 
 				print("Relay 1 was selected")
 				if tombol1_sts==False:
 					print("Relay 1 ON")
