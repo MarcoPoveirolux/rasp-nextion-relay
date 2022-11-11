@@ -1,2 +1,5 @@
-# rasp-nextion-relay
-connection rasp pi with 8 relay module and HMI
+python code with connections for the relay and rasp pi  this case usinga a raspeberry pi4 
+
+And python code to read the output from the uart connection from the rasp pi 
+
+![RELAY](C:\Users\marco\Documents\rasp-nextion-relay\relay connection.jpg)
